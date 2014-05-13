@@ -3,12 +3,12 @@ var express = require('express');
 var http = require('http');
 var path = require('path');
 var sio = require('socket.io');
-var serverSockets = require('./controllers/serverSocket.js');
+var serverSockets = require('./app/controllers/serverSocket.js');
 // express
 var app = express();
 
 // configure express
-app.set('views', __dirname + '/views');
+app.set('views', __dirname + '/app/views');
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
 
