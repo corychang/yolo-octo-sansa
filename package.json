@@ -1,0 +1,44 @@
+{
+	"name": "yolo-octo-sansa",
+  "description": "A facebook game. The Mole meets Mafia",
+  "keywords": [
+      "facebook",
+      "game",
+      "socket",
+      "Mole",
+      "Mafia"
+    ],
+  "license": "MIT",
+  "contributors": [
+    {
+      "name": "Alex Egan",
+      "email": "aegan@andrew.cmu.edu",
+      "github": "AEgan",
+      "email": "http://eganalex.com"
+    }
+  ],
+	"scripts": {
+		"start": "node app.js"
+	},
+  "bugs": {
+    "url": "https://github.com/corychang/yolo-octo-sansa/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/corychang/yolo-octo-sansa"
+  },
+	"version": "0.0.1",
+	"subdomain": "yolooctosansa",
+	"engines": {
+		"node": ">=0.10"
+	},
+	"dependencies": {
+		"express": "4.2.0",
+		"ejs": "1.0.0",
+		"socket.io": "0.9.16",
+    "mongodb": "1.4.3",
+    "mongoose": "3.8.9",
+    "passport": "0.2.0",
+    "passport-facebook": "1.0.3 "
+	}
+}
