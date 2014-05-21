@@ -1,5 +1,6 @@
 // set up dependencies
 var express = require('express');
+var connect = require('connect');
 var http = require('http');
 var path = require('path');
 var sio = require('socket.io');
@@ -9,12 +10,9 @@ var serverSockets = require('./app/controllers/serverSocket.js');
 var passport = require('passport');
 var FacebookStrategy = require('passport-facebook').Strategy;
 var keys = require(__dirname + '/config/keys');
-console.log('keys is ' + keys);
 
 var FACEBOOK_APP_ID = keys.app_id;
-console.log("app id is " + keys.app_id);
 var FACEBOOK_APP_SECRET = keys.app_secret;
-console.log("app secret is " + keys.app_secret);
 
 // not sure why I need this but I do
 passport.serializeUser(function(user, done) {
@@ -51,19 +49,22 @@ passport.use(new FacebookStrategy({
 
 // express
 var app = express();
-
 // configure express
 app.set('views', __dirname + '/app/views');
 app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(connect.cookieParser());
+app.use(connect.session({ secret: 'B4DC0FF33B33F' }));
+app.use(passport.initialize());
+app.use(passport.session());
 
 require('./config/routes')(app);
 
 // start the server and begin using socket io
 var server = http.createServer(app);
 var io = sio.listen(server);
-server.listen(12345, function(){
-  console.log("Express server listening on port 12345");
+server.listen(3000, function(){
+  console.log("Express server listening on port 3000");
 	});
 
 // initialize socketio
