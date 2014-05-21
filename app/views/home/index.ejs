@@ -12,6 +12,8 @@
     <h1 id='testArea'>Not working</h1>
     <% if(user) { %>
       <%= JSON.stringify(user) %>
-    <% } %>
+    <% } else { %>
+      <a href="/auth/facebook">Login with facebook</a>
+    <% }%>
   </body>
 </html>
